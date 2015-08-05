@@ -1,12 +1,11 @@
 package com.wordnik.swagger.jaxrs.config;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
-
-import org.apache.commons.lang3.StringUtils;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 /**
  * The <code>ReaderConfigUtils</code> class defines helper methods for handling
@@ -18,9 +17,9 @@ public class ReaderConfigUtils {
   }
 
   public static void initReaderConfig(ServletConfig config) {
-    if("true".equals(config.getInitParameter("scan.all.resources"))) {
+    if("true".equals(config.getInitParameter("scan.all.resources")) || config.getInitParameter("ignore.routes") != null) {
       final DefaultReaderConfig rc = new DefaultReaderConfig();
-      rc.setScanAllResources(true);
+      rc.setScanAllResources("true".equals(config.getInitParameter("scan.all.resources")));
       final Set<String> ignoredRoutes = new LinkedHashSet<String>();
       for (String item : StringUtils.trimToEmpty(config.getInitParameter("ignore.routes")).split(",")) {
         final String route = StringUtils.trimToNull(item);
