@@ -9,13 +9,26 @@
   <artifactId>swagger-project</artifactId>
   <packaging>pom</packaging>
   <name>wordnik-swagger-project</name>
-  <version>1.5.3-M2-SNAPSHOT</version>
+  <version>1.5.3-M2-SPLUS-SNAPSHOT</version>
   <url>https://github.com/swagger-api/swagger-core</url>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-core.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-core.git</developerConnection>
     <url>https://github.com/swagger-api/swagger-core</url>
   </scm>
+    <distributionManagement>
+        <repository>
+            <id>serviceplus-xmc</id>
+            <name>Service+ XMC Releases</name>
+            <url>http://build.xmc.bonnier.se/nexus/content/repositories/releases/</url>
+        </repository>
+
+        <snapshotRepository>
+            <id>serviceplus-xmc</id>
+            <name>Service+ XMC Snapshots</name>
+            <url>http://build.xmc.bonnier.se/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
